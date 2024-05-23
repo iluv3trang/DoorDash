@@ -1,0 +1,62 @@
+<html>
+<head>
+<title>Learning.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #0033b3;}
+.s1 { color: #080808;}
+.s2 { color: #8c8c8c; font-style: italic;}
+.s3 { color: #067d17;}
+.s4 { color: #1750eb;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Learning.py</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">pandas </span><span class="s0">as </span><span class="s1">pd</span>
+<span class="s0">import </span><span class="s1">numpy </span><span class="s0">as </span><span class="s1">np</span>
+<span class="s0">import </span><span class="s1">shap</span>
+<span class="s0">import </span><span class="s1">lightgbm </span><span class="s0">as </span><span class="s1">lgbm</span>
+<span class="s0">from </span><span class="s1">sklearn.model_selection </span><span class="s0">import </span><span class="s1">train_test_split</span>
+<span class="s0">from </span><span class="s1">sklearn.datasets </span><span class="s0">import </span><span class="s1">load_breast_cancer</span>
+<span class="s0">from </span><span class="s1">scipy.special </span><span class="s0">import </span><span class="s1">expit</span>
+<span class="s1">shap.initjs()</span>
+
+<span class="s0">import </span><span class="s1">os</span>
+<span class="s2"># Print current working directory</span>
+<span class="s1">print(</span><span class="s3">&quot;Current Directory:&quot;</span><span class="s1">, os.getcwd())</span>
+<span class="s2"># Print full path to the file</span>
+<span class="s1">file_path = </span><span class="s3">&quot;DoorDash2.xlsx&quot;  </span><span class="s2"># Update with your file path</span>
+<span class="s1">full_path = os.path.abspath(file_path)</span>
+<span class="s1">print(</span><span class="s3">&quot;Full Path to File:&quot;</span><span class="s1">, full_path)</span>
+
+<span class="s0">import </span><span class="s1">matplotlib.pyplot </span><span class="s0">as </span><span class="s1">plt</span>
+
+<span class="s0">import </span><span class="s1">pandas </span><span class="s0">as </span><span class="s1">pd</span>
+<span class="s1">data = pd.read_excel(</span><span class="s3">&quot;/Users/iluv3trang/Library/Application Support/JetBrains/PyCharm2024.1/scratches/DoorDash2.xlsx&quot;</span><span class="s1">)</span>
+
+<span class="s1">X = data.drop(columns=[</span><span class="s3">'total_delivery_duration'</span><span class="s1">])</span>
+<span class="s1">y = data[</span><span class="s3">'total_delivery_duration'</span><span class="s1">]</span>
+
+<span class="s1">X_train, X_test, y_train, y_test = train_test_split(</span>
+    <span class="s1">X, y, test_size=</span><span class="s4">0.3</span><span class="s1">, random_state=</span><span class="s4">42</span>
+<span class="s1">)</span>
+
+<span class="s1">model = lgbm.LGBMRegressor()</span>
+<span class="s1">model.fit(X_train, y_train)</span>
+
+<span class="s1">y_pred = model.predict(X)</span>
+<span class="s2"># Model evaluation</span>
+<span class="s1">plt.figure(figsize = (</span><span class="s4">5</span><span class="s1">, </span><span class="s4">5</span><span class="s1">))</span>
+
+<span class="s1">plt.scatter (y, y_pred)</span>
+<span class="s1">plt.plot([</span><span class="s4">0</span><span class="s1">, </span><span class="s4">30</span><span class="s1">], [</span><span class="s4">0</span><span class="s1">, </span><span class="s4">30</span><span class="s1">], color = </span><span class="s3">'r'</span><span class="s1">, linestyle = </span><span class="s3">'-'</span><span class="s1">, linewidth =</span><span class="s4">2</span><span class="s1">)</span>
+<span class="s1">plt.ylabel (</span><span class="s3">'Predicted'</span><span class="s1">, size = </span><span class="s4">20</span><span class="s1">)</span>
+<span class="s1">plt.xlabel(</span><span class="s3">'Actual'</span><span class="s1">, size =</span><span class="s4">20</span><span class="s1">)</span>
+
+</pre>
+</body>
+</html>
