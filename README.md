@@ -7,9 +7,3 @@ Analyze and determine the main factors affecting delivery efficiency and enhance
 Present strategies and approaches to optimize the total delivery time and increase profits.
 To achieve these objectives, data mining techniques and machine learning algorithms will be employed to conduct further analysis in this study.
 
-References
-[1] Littman, Julie. (2022). DoorDash’s expansion beyond the US will come with challenges.
-Restaurant Dive: Restaurant News and Trends.
-[2] Reaume, Amanda. (2021). 8 Ways DoorDash Makes Money. Seeking Alpha | Stock Market Analysis & Tools for Investors.
-[3] GuruFocus Research. (2024). DoorDash Inc (DASH) Reports Strong Q4 and Full Year 2023 Results. Yahoo Finance.
-[4] Reeves, Martin. (2023). The Future 50: Companies built for growth in uncertain times. Fortune - Fortune 500 Daily & Breaking Business News.
